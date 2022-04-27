@@ -10,6 +10,7 @@ tweets_sql <- tweets %>%
 
 glimpse(tweets_sql)
 
+# This creates a new data frame with the SQL query's result
 result <- sqldf("
                 select screen_name, 
                        count(1) as num_tweets 
@@ -20,4 +21,5 @@ result <- sqldf("
 
 # Make a tibble
 result_tbl <- as_tibble(result)
+
 result_tbl
