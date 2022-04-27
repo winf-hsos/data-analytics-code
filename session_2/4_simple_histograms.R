@@ -18,17 +18,6 @@ ggplot(tweets_lindner) +
   aes(x = favorite_count) +
   geom_histogram(bins = 20)
   
-# With a density plot
-ggplot(tweets_lindner) +
-  aes(x = favorite_count) +
-  geom_density()
-
-# Both in one plot
-ggplot(tweets_lindner) +
-  aes(x = favorite_count) +
-  geom_histogram(binwidth = 250, aes(y = ..density..)) +
-  geom_density()
-
 # How is the number of retweets distributed?
 num_retweets <- 
   tweets %>% 
@@ -48,6 +37,3 @@ ggplot(num_retweets) +
   geom_boxplot() +
   geom_jitter(alpha = 0.1) +
   xlim(0, 200)
-
-
-

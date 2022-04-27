@@ -23,7 +23,6 @@ ggplot(tweets_per_hour) +
 ggplot(tweets_with_hour) +
   aes(x = hour) +
   geom_bar()
-  
 
 # With relative numbers
 tweets_per_hour_pct <-
@@ -35,7 +34,3 @@ ggplot(tweets_per_hour_pct) +
   aes(x = hour, y = pct) + 
   geom_col() +
   scale_y_continuous(labels=scales::percent)
-
-
-
-  
