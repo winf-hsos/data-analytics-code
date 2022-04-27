@@ -7,7 +7,7 @@ pokemon <- read_csv("./data/pokemon.csv")
 
 # 2. Convert the column "is_legendary" to a logical data type! Save the result!
 
-# 3. Print all legendary pokemons! How  many are there?
+# 3. Print all legendary pokemons! How many are there?
 
 # 4. Extract all columns that start with "against_"!
 
