@@ -20,6 +20,11 @@ tweets <- readRDS(file = "./data/tweets_ampel.rds")
 # Load REWE data
 rewe <- read_csv("./data/rewe_products.csv")
 
+# Load the Limonade survey data
+limonade <- read_csv("./data/limonade.csv")
+
+colnames(limonade)
+
 # apply a predefined theme
 limonade %>%
   transmute(alter = 2021 - f39_geburtsjahr, studiengang = as.factor(f44_studiengang)) %>%
