@@ -24,7 +24,7 @@ ggplot(covid_ger_vacc) +
   geom_line(color = "#009ee3", size = 1.0) +
   
   # Change the x-axis of type date
-  scale_x_date(name = "Date", date_breaks = "3 month", date_labels = "%b %Y") +
+  scale_x_date(name = "Date", date_breaks = "3 month", date_labels = "%B %Y") +
   
   # Change the y-axis of type continuous
   scale_y_continuous(n.breaks = 10, labels = function(x) format(x, big.mark = ".", scientific = FALSE)) +

@@ -31,7 +31,7 @@ limonade %>%
   filter(alter < 100 & studiengang != "-999") %>%
   
   ggplot(aes(x = alter, y = ..density..)) +
-  geom_histogram(binwidth = 1, color="#000000", fill="#009ee3", alpha = 0.8) +
+  geom_histogram(binwidth = 1, alpha = 0.8) +
   facet_wrap(~studiengang, ncol = 2) +
   ggtitle("Age Distribution by Study Program") +
   labs(y = "Proportion", x = "Age") +

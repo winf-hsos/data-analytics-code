@@ -24,3 +24,14 @@ tweets %>%
   ggplot() + 
   geom_bar(aes(x = screen_name))
 
+tweets %>% 
+  filter(year(created_at) == 2022) %>% 
+  count(screen_name) %>% 
+  ggplot(aes(x = screen_name, y = n)) +
+  geom_col()
+
+
+
+
+
+

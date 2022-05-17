@@ -17,12 +17,12 @@ limonade <- read_csv("./data/limonade.csv")
 
 # facet_wrap() for one small plot per study program
 limonade %>%
-  transmute(alter = 2021 - f39_geburtsjahr, studiengang = as.factor(f44_studiengang)) %>%
+  transmute(alter = 2022 - f39_geburtsjahr, studiengang = as.factor(f44_studiengang)) %>%
   filter(alter < 100 & studiengang != "-999") %>%
   
   ggplot(aes(x = alter, y = ..density..)) +
-  geom_histogram(binwidth = 1, color="#000000", fill="#009ee3", alpha = 0.8) +
-  facet_wrap(~studiengang, ncol = 2)
+  geom_histogram(binwidth = 10, color="#000000", fill="#009ee3", alpha = 0.8) +
+  facet_wrap(~studiengang, ncol = 3)
 
 # facet_wrap() with density plots
 limonade %>%

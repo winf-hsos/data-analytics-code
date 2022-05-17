@@ -5,6 +5,9 @@ a2 <- read_csv("./data/anscombe2.csv")
 a3 <- read_csv("./data/anscombe3.csv")
 a4 <- read_csv("./data/anscombe4.csv")
 
+a1
+a2
+
 cor(a1$x, a1$y)
 cor(a2$x, a2$y)
 cor(a3$x, a3$y)
