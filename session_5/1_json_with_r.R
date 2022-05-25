@@ -29,7 +29,7 @@ tweets %>%
   select(id, screen_name, urls) %>% 
   unnest(urls)
 
-# Extract information from each URL with the urltools package
+# Extract information from each URL with the 'urltools' package
 
 #install.packages("urltools")
 library(urltools)
@@ -42,7 +42,7 @@ tweets %>%
   mutate(tld = list(host_extract(domain(clean_url)))) %>% 
   unnest(tld)
 
-# A third array of data frames is photos column
+# A third array of data frames is the 'photos' column
 tweets %>% 
   select(id, screen_name, photos) %>% 
   unnest(photos, names_repair = "unique")
@@ -57,3 +57,6 @@ tweets %>%
   select(hashtags) %>% 
   transmute(num_hashtags = lengths(hashtags), hashtags) %>% 
   arrange(-num_hashtags)
+
+# READ MORE: https://tidyr.tidyverse.org/articles/rectangle.html
+

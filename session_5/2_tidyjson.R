@@ -5,3 +5,5 @@ tweets <- read_json("./data/tweets_ampel.json.gz", format="jsonl")
 
 # Take a look at the tidyjson documentation for more details:
 # https://cran.r-project.org/web/packages/tidyjson/vignettes/introduction-to-tidyjson.html
+
+# We won't cover this further in this course.
