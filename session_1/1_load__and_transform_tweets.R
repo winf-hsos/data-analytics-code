@@ -18,7 +18,6 @@ library(tidyjson)
 # This package has neat functions for date/time and is installed with tidyverse
 library(lubridate)
 
-
 # 3. Load the tweets from GZIP-JSON ####
 
 # Load the original source file from a compressed JSON
@@ -32,9 +31,10 @@ glimpse(tweets)
 
 
 # 4. Transform some columns ####
+
 # Convert all columns that end in "_count" into a numeric format
 tweets <- 
-  tweets %>% 
+  tweets |> 
   mutate(across(ends_with("_count"), as.numeric))
 
 # Set the locale to English (just to make sure..)
@@ -42,7 +42,7 @@ Sys.setlocale("LC_TIME", "English")
 
 # Convert the column "created_at" into a date time format
 tweets <- 
-  tweets %>% 
+  tweets |>
   mutate(created_at = parse_date_time(created_at, "a b d H:M:S z Y"))
 
 # Take another look... looks fine?
