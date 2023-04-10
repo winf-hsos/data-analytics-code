@@ -1,3 +1,7 @@
+# WordLens Code Examples
+
+This repository contains all code examples for the [WordLens project](https://wordlens.datalit.de/).
+
 [![CC BY 4.0][cc-by-shield]][cc-by]
 
 This work is licensed under a
