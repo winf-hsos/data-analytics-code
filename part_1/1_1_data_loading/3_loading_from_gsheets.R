@@ -1,39 +1,38 @@
+#### Load data from Google Spreadsheets ####
+
+# Always load the tidyverse at the top of your script
 library(tidyverse)
-library(lubridate)
 
-# We can read a published GSheet just like any CSV-file
+# 1. Install required packages (only once) ####
 
-# Read more on publishing a GSheet here: 
-# https://analytics.datalit.de/sql/multiple-data-sets-with-sql/datensaetze-anreichern
+# Find more information for this package here: https://googlesheets4.tidyverse.org
+install.packages("googlesheets4")
 
-meta_data <- read_csv("https://docs.google.com/spreadsheets/d/e/2PACX-1vTbaWxR5XodD0gr0grhpJSbw1eb-VWqYt2KUVUQoZGKaaBfVtsf2gA09an67ky7pVKzRhKRYajt5cn9/pub?gid=0&single=true&output=csv&t=1")
+# Load the Google Spreadsheets library 
+library(googlesheets4)
 
-meta_data %>% 
+# 2. Read from a Google Spreadsheet with authentication ####
+
+# Read data from a spreadsheet, will ask to authenticate (!)
+limo <- read_sheet("https://docs.google.com/spreadsheets/d/1nRix1JnytJKy0rsX1urGKyEnkDn_tMUqxQldzT4hayY/edit#gid=847323912")
+
+# You can also read only with the sheet ID
+limo <- read_sheet("1nRix1JnytJKy0rsX1urGKyEnkDn_tMUqxQldzT4hayY")
+
+limo |> 
   glimpse()
 
-# And now we can join both data sets
-tweets_meta <- tweets %>% 
-  left_join(meta_data, by = c("screen_name" = "user")) %>% 
-  select(screen_name, created_at, party, birthyear, gender, followers, favorite_count)
+# 3. Read from a shared Google Spreadsheet without authentication ####
 
-# This means we can now use additional variables to analyze our data :-)
-tweets_meta %>% 
-  filter(year(created_at) == 2022) %>% 
-  count(party, sort = T)
+# For this to work, you have to share the spreadsheet with read-option for everyone
 
-# Do women or men get more likes on average?
-tweets_meta %>% 
-  group_by(gender) %>% 
-  summarise(avg_likes = mean(favorite_count), num_tweets = n())
-  
-# When put in context with their followers?
-tweets_meta %>% 
-  group_by(gender) %>% 
-  summarise(avg_likes = mean(favorite_count / followers), num_tweets = n())
+# Build the URL from sheet ID and sheet name
+sheet_id <- "1nRix1JnytJKy0rsX1urGKyEnkDn_tMUqxQldzT4hayY"
+sheet_name <- "raw"
+sheet_url <- paste0("https://docs.google.com/spreadsheets/d/", sheet_id, "/gviz/tq?tqx=out:csv&sheet=", sheet_name)
 
-# Alternative is the googlesheets4 package: 
-# https://r4ds.hadley.nz/spreadsheets.html#google-sheets
+# Read the data with the plain read_csv() function
+limo <- read_csv(sheet_url)
 
-
-
-
+limo |> 
+  glimpse()
