@@ -3,6 +3,9 @@ library(tidyverse)
 # Load the data from RDS
 tweets <- readRDS(file = "data/tweets_ampel.rds")
 
+# Speaking tibbles
+tweets
+
 # Get an overview of the data set (column names and types and preview)
 glimpse(tweets)
 
@@ -12,6 +15,9 @@ tweets |>
 
 # Get a list of column names
 colnames(tweets)
+
+tweets |> 
+  colnames()
 
 # How many rows do we have? 
 tweets |> 
@@ -29,8 +35,34 @@ tweets |>
 tweets |> 
   tail(n = 20)
 
+# Print more lines
+tweets |> 
+  print(n = 100)
+
+# Sampling random lines
+tweets |> 
+  slice_sample(n = 10)
+
+tweets |> 
+  slice_sample(prop = 0.01)
+
 # Show the dimensions (number of rows and columns)
 dim(tweets)
+
+cols <- ncol(tweets)
+
+rows <- nrow(tweets)
+
+cells <- cols * rows
+
+cells
+
+tibble(
+  number_cols = ncol(tweets), 
+  number_rows = nrow(tweets),
+  number_cells = number_cols * number_rows
+)
+
 
 # Which unique screen names are part of the data set?
 tweets |> 
@@ -48,6 +80,21 @@ tweets |>
 # The count function can sort in descending order, too
 tweets |> 
   count(screen_name, sort = TRUE)
+
+# With janitor
+library(janitor)
+
+tweets |> 
+  tabyl(is_retweet)
+
+tweets %>% 
+  tabyl(is_retweet) |> 
+  arrange(percent)
+
+# With two variables
+tweets |> 
+  tabyl(screen_name, is_quote_status)
+
 
 # Summarize a column
 summary(tweets$retweet_count)
