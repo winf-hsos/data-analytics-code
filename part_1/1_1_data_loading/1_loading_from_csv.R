@@ -18,6 +18,12 @@ body_measures <- read_csv2("data/body_measures.csv")
 body_measures |> 
   glimpse()
 
+# While we're at it, let's convert the timestamp column
+body_measures |>
+  janitor::clean_names() |> 
+  mutate(timestamp = lubridate::dmy_hms(timestamp))
+
+
 # If you need full control over the delimiter and decimal point
 body_measures <- read_delim("data/body_measures.csv", 
                             delim = ";",
