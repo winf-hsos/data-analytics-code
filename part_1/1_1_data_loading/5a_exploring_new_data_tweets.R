@@ -95,7 +95,6 @@ tweets %>%
 tweets |> 
   tabyl(screen_name, is_quote_status)
 
-
 # Summarize a column
 summary(tweets$retweet_count)
 
@@ -117,3 +116,12 @@ tweets |>
   select(skim_variable, n_missing, complete_rate) |> 
   arrange(-complete_rate) |> 
   print(n = 22)
+
+# Get the data type for each column
+data_types <- tweets  |> 
+  map(~ class(.))
+
+data_types |>
+  enframe(name = "colnumn_name", value = "data_type") |> 
+  mutate(data_type = as.character(data_type))
+
