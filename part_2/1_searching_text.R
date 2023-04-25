@@ -1,4 +1,5 @@
 #### Searching in text columns ####
+library(tidyverse)
 
 # Load the tweets data set ####
 tweets <- readRDS('data/tweets_ampel.rds')
@@ -12,7 +13,8 @@ tweets |>
 
 # What about original tweets only?
 tweets |> 
-  filter(str_detect(str_to_lower(text), "chatgpt")) |> 
+  mutate(text = str_to_lower(text)) |> 
+  filter(str_detect(text, "chatgpt")) |> 
   filter(!is_retweet) |> 
   select(screen_name, text)
 
@@ -57,17 +59,27 @@ tweets |>
   mutate(text = str_to_lower(text)) |> 
   mutate(keyword_matches = str_extract(text, "chatgpt|gpt3|gpt4|openai|künstliche intelligenz")) |>
   filter(!is.na(keyword_matches)) |> 
-  select(keyword_matches, text)
+  select(keyword_matches, text) |> 
+  arrange(id)
 
 # Extracting the key word matches (all matches) in separate rows
 tweets |> 
   mutate(text = str_to_lower(text)) |> 
-  mutate(keyword_matches = str_extract(text, "chatgpt|gpt3|gpt4|openai|künstliche intelligenz")) |>
+    mutate(keyword_matches = str_extract_all(text, "chatgpt|gpt3|gpt4|openai|künstliche intelligenz")) |>
   unnest_longer(keyword_matches) |> 
   filter(!is.na(keyword_matches)) |> 
-  select(keyword_matches, text)
+  select(keyword_matches, text) |> 
+  print(n = 100)
 
-# Extracting the keyword matches (all matches) in one string column
+# Extracting the keyword matches (all matches) into one string column
+tweets |> 
+  mutate(text = str_to_lower(text)) |> 
+  mutate(keyword_matches = str_extract_all(text, "chatgpt|gpt3|gpt4|openai|künstliche intelligenz")) |> 
+  mutate(keyword_matches_flat = str_c(unlist(keyword_matches), collapse = ",")) |> 
+  select(id, keyword_matches, keyword_matches_flat) |> 
+  arrange(-lengths(keyword_matches))
+
+# Alternative with stringi
 tweets |> 
   mutate(text = str_to_lower(text)) |> 
   mutate(keyword_matches = str_extract_all(text, "chatgpt|gpt3|gpt4|openai|künstliche intelligenz")) |> 
@@ -75,12 +87,15 @@ tweets |>
   mutate(keyword_matches_flat = stringi::stri_join_list(keyword_matches, sep = ",")) |> 
   select(id, keyword_matches, keyword_matches_flat)
 
+
 # Extract all URLs from tweets
 tweets |> 
   mutate(extracted_urls = str_extract_all(text, "https?://\\S+"),  .before = 1) |> 
   unnest_longer(extracted_urls, keep_empty = TRUE) |> # keep those with no URLs
   select(id, screen_name, extracted_urls, text) |> 
   arrange(id)
+
+# 5. Replacing matches ####
 
 
 

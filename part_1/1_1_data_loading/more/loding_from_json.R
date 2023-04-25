@@ -41,6 +41,14 @@ tweets <-
   tweets |> 
   mutate(created_at = parse_date_time(created_at, "a b d H:M:S z Y"))
 
+# Remove duplicates with the same ID
+tweets <- tweets %>%
+  group_by(id) %>%
+  mutate(row_number = row_number()) %>%
+  filter(row_number == 1) %>%
+  select(-row_number)
+
+
 # Take another look... looks fine?
 glimpse(tweets)
 
