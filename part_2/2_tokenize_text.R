@@ -82,6 +82,8 @@ stop_from_sheets |>
 
 # 5. POS / Stemming ####
 
+# Coming soon.
+
 
 
 
