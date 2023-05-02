@@ -46,7 +46,8 @@ tweets <- tweets %>%
   group_by(id) %>%
   mutate(row_number = row_number()) %>%
   filter(row_number == 1) %>%
-  select(-row_number)
+  select(-row_number) |> 
+  ungroup()
 
 
 # Take another look... looks fine?
