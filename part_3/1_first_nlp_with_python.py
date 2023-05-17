@@ -22,6 +22,7 @@ print("Verbs:", [token.lemma_ for token in doc if token.pos_ == "VERB"])
 for entity in doc.ents:
     print(entity.text, entity.label_)
 
+
     
     
 
