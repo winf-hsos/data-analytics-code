@@ -1,5 +1,6 @@
 # pip install -U spacy
 # python -m spacy download en_core_web_sm
+# python -m spacy download en_core_web_md
 import spacy
 
 # Load English tokenizer, tagger, parser and NER
@@ -59,3 +60,12 @@ print("\n")
 # Stop words and other useful properties
 for token in doc:
 	print(token.text, token.is_stop, token.is_alpha, token.shape_)
+	
+print("\n")
+
+# Similarity
+nlp = spacy.load("en_core_web_md")
+doc1 = nlp("I love this course")
+doc2 = nlp("I like this lecture")
+
+print(doc1, "<->", doc2, doc1.similarity(doc2))
