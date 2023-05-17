@@ -15,7 +15,7 @@ with gzip.open(csv_file, mode='rt', encoding='utf-8') as file:
         data.append(row)
 
 pos = []
-limit = 5000
+limit = 100
 for i, t in enumerate(data):
   
   # Run the spaCy NLP pipeline
