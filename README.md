@@ -1,6 +1,6 @@
-# WordLens Code Examples
+# Data Analytics Code Examples
 
-This repository contains all code examples for the [WordLens project](https://wordlens.datalit.de/).
+This repository contains code examples for my courses on data analytics with R and Python.
 
 [![CC BY 4.0][cc-by-shield]][cc-by]
 
