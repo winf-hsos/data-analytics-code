@@ -28,21 +28,21 @@ tweets |>
   inner_join(meta, by = join_by(screen_name == user_screenname), keep = TRUE) |>
   distinct(screen_name, user_screenname, party)
 
-# 2. Left Join
+# 2. Left Join ####
 
 # Keep all tweets, regardless of whether we have metadata for the user
 tweets |> 
   left_join(meta, by = join_by(screen_name == user_screenname)) |> 
   distinct(screen_name, party)
 
-# 3. Right Join
+# 3. Right Join ####
 
 # Keep all users from the meta data set, even if there are no tweets
 tweets |> 
   right_join(meta, by = join_by(screen_name == user_screenname)) |> 
   distinct(screen_name, party)
 
-# 4. Full Join
+# 4. Full Join ####
 
 # Keep all rows from both data sets
 tweets |> 
