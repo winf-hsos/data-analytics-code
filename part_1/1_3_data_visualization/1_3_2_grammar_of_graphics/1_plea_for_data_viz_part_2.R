@@ -7,6 +7,8 @@ a4 <- read_csv("data/anscombe4.csv")
 
 a1
 a2
+a3
+a4
 
 cor(a1$x, a1$y)
 cor(a2$x, a2$y)

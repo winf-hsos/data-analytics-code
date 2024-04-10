@@ -2,7 +2,7 @@ library(tidyverse)
 library(lubridate)
 
 # Load the data from RDS
-tweets <- readRDS(file = "./data/tweets_ampel.rds")
+tweets <- readRDS(file = "data/tweets_ampel.rds")
 
 # Add new calculated column (and insert it before the first column)
 tweets |> 

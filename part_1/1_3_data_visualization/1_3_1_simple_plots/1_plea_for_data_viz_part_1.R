@@ -7,3 +7,5 @@ some_data
 ggplot(some_data) +
   aes(x, y) +
   geom_point()
+
+# Credits to Alberto Cairo
