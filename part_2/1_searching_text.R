@@ -52,6 +52,11 @@ tweets |>
   mutate(text = str_to_lower(text)) |> 
   filter(str_detect(text, "@\\w+"))
 
+# You can test regular expressions with str_view()
+test_str <- "I would love to see @RealDonaldTrump lose the 2024 elections #usa #gobiden"
+str_view(test_str, "@\\w+")
+str_view(test_str, "#[A-Za-z0-9_]+")
+
 # 4. Extracting search results ####
 
 # Extracting the key word matches (only the first match)
@@ -61,6 +66,14 @@ tweets |>
   filter(!is.na(keyword_matches)) |> 
   select(keyword_matches, text) |> 
   arrange(id)
+
+# Extracting all matches as a list and sort by length of list
+tweets |> 
+  mutate(text = str_to_lower(text)) |> 
+  mutate(matches = str_extract_all(text, "chatgpt|gpt3|gpt4")) |>
+  filter(!is.na(matches)) |> 
+  select(matches, text) |> 
+  arrange(desc(lengths(matches)))
 
 # Extracting the key word matches (all matches) in separate rows
 tweets |> 
@@ -87,16 +100,12 @@ tweets |>
   mutate(keyword_matches_flat = stringi::stri_join_list(keyword_matches, sep = ",")) |> 
   select(id, keyword_matches, keyword_matches_flat)
 
-
 # Extract all URLs from tweets
 tweets |> 
   mutate(extracted_urls = str_extract_all(text, "https?://\\S+"),  .before = 1) |> 
   unnest_longer(extracted_urls, keep_empty = TRUE) |> # keep those with no URLs
   select(id, screen_name, extracted_urls, text) |> 
   arrange(id)
-
-# 5. Replacing matches ####
-
 
 
 

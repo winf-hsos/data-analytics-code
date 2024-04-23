@@ -1,9 +1,13 @@
 # pip install -U spacy
+# pip install spacy-transformers
 # python -m spacy download en_core_web_sm
 # python -m spacy download en_core_web_md
+# python -m spacy download en_core_web_trf
 import spacy
+import spacy_transformers
 
 # Load English tokenizer, tagger, parser and NER
+#nlp = spacy.load("en_core_web_sm")
 nlp = spacy.load("en_core_web_trf")
 
 # Process whole documents
