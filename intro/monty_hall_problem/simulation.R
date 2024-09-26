@@ -32,7 +32,7 @@ for (i in 1:n) {
     # Contestant wins if switches and was previously wrong
     if (contestant_switches) {
         user_wins <- !contestant_correct
-    # Contestant wins if does not switch and was previously right    
+    # Contestant wins if does not switch and was previously right
     } else {
         user_wins <- contestant_correct
     }
