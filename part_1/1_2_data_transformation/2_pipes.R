@@ -34,7 +34,7 @@ head(sorted, 5)
 tweets |>
   filter(!is_retweet) |> 
   mutate(is_top_tweet = retweet_count >= quantile(retweet_count, 0.99)) |> 
-  filter(is_top_tweet) |> 
+  filter(is_top_tweet) |>
   select(retweet_count, screen_name, text) |> 
   arrange(-retweet_count) |> 
   head(5)
