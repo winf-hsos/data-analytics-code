@@ -10,21 +10,4 @@ income <- readRDS("data/murder_mystery/income.rds")
 interview <- readRDS("data/murder_mystery/interview.rds")
 person <- readRDS("data/murder_mystery/person.rds")
 
-crime_scene_report |> 
-  glimpse()
-
-# Get started...
-crime_scene_report |> 
-  filter(date == "20180115") |> 
-  filter(city == "SQL City") |> 
-  filter(type == "murder") |> 
-  select(description) |> 
-  pull()
-
-# Security footage shows that there were 2 witnesses. 
-# The first witness lives at the last house on "Northwestern Dr". 
-# The second witness, named Annabel, lives somewhere on "Franklin Ave"
-
-person |> 
-  glimpse()
-
+# It's your turn now...
