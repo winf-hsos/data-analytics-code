@@ -42,6 +42,6 @@ ordered_weight_category[1] < ordered_weight_category[2]
 # Forcats
 fct_lump(weight_category)
 fct_infreq(weight_category)
-fct_relevel(weight_category, "light")
+fct_relevel(weight_category, "light", "medium")
 fct_rev(weight_category)
 fct_collapse(weight_category, light = c("light", "medium"))
