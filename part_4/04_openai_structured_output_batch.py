@@ -34,6 +34,7 @@ with open(output_file, "w", encoding="utf-8") as f:
         reader = csv.reader(csvfile)
         header = next(reader)
         for row in reader:
+            id = row[0]
             tweet = row[2]  # assuming tweet is in the third column
 
             user_prompt = f"Here is a tweet to extract information from: {tweet}"
@@ -46,9 +47,11 @@ with open(output_file, "w", encoding="utf-8") as f:
             )
 
             tweet_extracted_information = completion.choices[0].message.parsed
+            tweet_extracted_information_json = tweet_extracted_information.model_dump()
+            tweet_extracted_information_json["id"] = str(id)
             
             # Write one JSON object per line
-            json_line = json.dumps(tweet_extracted_information.model_dump(), ensure_ascii=False)
+            json_line = json.dumps(tweet_extracted_information_json, ensure_ascii=False)
             f.write(json_line + "\n")
 
 print(f"Extracted information written to {output_file}")

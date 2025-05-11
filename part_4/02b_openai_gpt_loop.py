@@ -47,4 +47,4 @@ with open(output_file, 'w', newline='', encoding='utf-8') as csvfile:
     writer.writerow(header)
     writer.writerows(classified_rows)
 
-print(f"Classification complete. Results written to: {output_file})
+print(f"Classification complete. Results written to: {output_file}")
