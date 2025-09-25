@@ -1,5 +1,4 @@
 Version: 1.0
-ProjectId: ee7e5b5f-1b79-4094-8dea-c05ade858307
 
 RestoreWorkspace: Default
 SaveWorkspace: Default
@@ -9,10 +8,3 @@ EnableCodeIndexing: Yes
 UseSpacesForTab: Yes
 NumSpacesForTab: 2
 Encoding: UTF-8
-
-RnwWeave: Sweave
-LaTeX: pdfLaTeX
-
-PythonType: virtualenv
-PythonVersion: 3.11.9
-PythonPath: .python-env/Scripts/python.exe
