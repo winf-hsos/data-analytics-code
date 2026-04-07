@@ -2,6 +2,13 @@
 
 This repository contains code examples for my courses on data analytics with R and Python.
 
+## Overview
+
+The code is structured into folders, each folder adressing a specific aspects of exploratory data analysis:
+
+- [intro](intro): Small cases to introduce the topic of exploratory data analysis (currently Monty Hall Problem, R Murder Mystery)
+- [part_01](part_01)
+
 ## Setup a virtual R environment
 
 You first need to install the `renv` package in your global R installation, if you don't have it yet.
