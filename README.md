@@ -51,6 +51,7 @@ And if you want to manually deactivate it:
 renv::deactivate()
 ```` 
 
+## License
 
 [![CC BY 4.0][cc-by-shield]][cc-by]
 
