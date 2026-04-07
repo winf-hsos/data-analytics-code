@@ -7,7 +7,13 @@ This repository contains code examples for my courses on data analytics with R a
 The code is structured into folders, each folder adressing a specific aspects of exploratory data analysis:
 
 - [intro](intro): Small cases to introduce the topic of exploratory data analysis (currently Monty Hall Problem, R Murder Mystery)
-- [part_01](part_01)
+- [part_0](part_0): Data represenation in R (data frames, tibbles, vectors, factors)
+- [part_1](part_1): Basic steps in exploratory data analysis: loading, transforming and visualizing data
+- [part_2](part_2): Rule-based text analysis in R
+- [part_3](part_3): NLP with spaCy using Python
+- [part_4](part_4): Collection of examples for using Large Language Models (LLMs) for text analysis
+- [data](data): Data sets used in the examples
+- [your_scripts](your_scripts): Your own scripts and data analyses
 
 ## Setup a virtual R environment
 
