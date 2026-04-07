@@ -17,7 +17,7 @@ The code is structured into folders, each folder adressing a specific aspects of
 
 ## Setup a virtual R environment
 
-You first need to install the `renv` package in your global R installation, if you don't have it yet.
+I recommend you use a virtual R environment for your R projects. You first need to install the `renv` package in your global R installation, if you don't have it yet.
 
 ```
 install.packages("renv")
