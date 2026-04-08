@@ -8,3 +8,4 @@ _archive
 env
 renv/
 renv.lock
+data/tagesschau.zip
